@@ -7,7 +7,7 @@
 const CONFIG = {
   STRIPE_KEY:       'pk_live_YOUR_STRIPE_KEY_HERE',
   MAILCHIMP_URL:    'https://YOUR_MAILCHIMP_URL_HERE',
-  YOUTUBE_CHANNEL:  'https://www.youtube.com/@YOUR_CHANNEL_HERE',
+  YOUTUBE_CHANNEL:  'https://www.youtube.com/@finstart-f6x,
   GUMROAD_BASE:     'https://YOUR_GUMROAD_HANDLE.gumroad.com',
   PRODUCTS: {
     calculator:     'https://YOUR_GUMROAD_HANDLE.gumroad.com/l/YOUR_CALCULATOR_LINK',
