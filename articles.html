@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles — FinStart</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .articles-hero{background:var(--navy);padding:140px 0 80px;text-align:center;position:relative;overflow:hidden}
+    .articles-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(184,135,58,0.08) 0%,transparent 70%)}
+    .articles-hero h1{color:var(--white);position:relative;z-index:1}
+    .articles-hero p{color:rgba(255,255,255,0.55);font-size:18px;max-width:520px;margin:16px auto 0;position:relative;z-index:1}
+    .articles-section{background:var(--cream);padding:80px 0}
+    .articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+    .art-card{background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius-lg);overflow:hidden;transition:all 0.3s;display:flex;flex-direction:column;text-decoration:none}
+    .art-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+    .art-thumb{height:170px;display:flex;align-items:center;justify-content:center;font-size:52px;position:relative}
+    .art-thumb-tag{position:absolute;bottom:12px;left:14px;background:var(--gold);color:var(--navy);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:5px}
+    .art-body{padding:24px;flex:1;display:flex;flex-direction:column}
+    .art-body h3{font-size:19px;color:var(--navy);margin-bottom:10px;line-height:1.3}
+    .art-body p{font-size:13px;line-height:1.65;flex:1}
+    .art-meta{display:flex;gap:12px;margin-top:16px;font-size:11px;color:var(--text-muted)}
+    .art-read{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:600;color:var(--gold);transition:gap 0.2s}
+    .art-card:hover .art-read{gap:10px}
+    @media(max-width:900px){.articles-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.articles-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div id="nav-ph"></div><div id="modal-ph"></div>
+<header class="articles-hero">
+  <div class="container">
+    <div class="badge" style="margin-bottom:20px;"><span class="badge-dot"></span>FinStart Articles</div>
+    <h1>Learn from <em>Every Article.</em></h1>
+    <p>In-depth guides on every topic that matters for young German investors. Written simply, with real numbers.</p>
+  </div>
+</header>
+<div id="ticker-ph"></div>
+<section class="articles-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="label">All Articles</div>
+      <h2>Start <em>anywhere.</em></h2>
+    </div>
+    <div class="articles-grid">
+      <a href="articles/etf-guide.html" class="art-card reveal">
+        <div class="art-thumb" style="background:linear-gradient(135deg,#0c1e35,#1e4268);">📊<span class="art-thumb-tag">Foundations</span></div>
+        <div class="art-body">
+          <h3>What is an ETF? The Complete Beginner's Guide</h3>
+          <p>The simplest investment tool that exists, explained from scratch. What it is, how it works, and why it is the default starting point for beginners worldwide.</p>
+          <div class="art-meta"><span>📖 12 min</span><span>🆓 Free</span></div>
+          <span class="art-read">Read article →</span>
+        </div>
+      </a>
+      <a href="articles/compound-interest.html" class="art-card reveal reveal-delay-1">
+        <div class="art-thumb" style="background:linear-gradient(135deg,#1a3a1a,#2d5a2d);">💰<span class="art-thumb-tag">Fundamentals</span></div>
+        <div class="art-body">
+          <h3>Compound Interest — The Most Powerful Concept in Personal Finance</h3>
+          <p>Why starting at 16 is worth dramatically more than starting at 30, with real numbers that will change how you think about money permanently.</p>
+          <div class="art-meta"><span>📖 10 min</span><span>🆓 Free</span></div>
+          <span class="art-read">Read article →</span>
+        </div>
+      </a>
+      <a href="articles/depot-under-18.html" class="art-card reveal reveal-delay-2">
+        <div class="art-thumb" style="background:linear-gradient(135deg,#2a1a0e,#5a3a18);">🏦<span class="art-thumb-tag">Germany</span></div>
+        <div class="art-body">
+          <h3>How to Open a Depot Under 18 in Germany</h3>
+          <p>Which brokers accept minors, what documents you need, and exactly how to make your first investment. The guide nobody else made clearly.</p>
+          <div class="art-meta"><span>📖 14 min</span><span>🆓 Free</span></div>
+          <span class="art-read">Read article →</span>
+        </div>
+      </a>
+      <a href="articles/msci-world.html" class="art-card reveal">
+        <div class="art-thumb" style="background:linear-gradient(135deg,#0a1a3e,#1a3a6a);">🌍<span class="art-thumb-tag">Market Literacy</span></div>
+        <div class="art-body">
+          <h3>The MSCI World ETF — Everything You Need to Know</h3>
+          <p>Why this single index fund is the most commonly recommended starting point. What it contains, how it has performed, and what you should know before investing.</p>
+          <div class="art-meta"><span>📖 11 min</span><span>🆓 Free</span></div>
+          <span class="art-read">Read article →</span>
+        </div>
+      </a>
+      <a href="articles/saving-vs-investing.html" class="art-card reveal reveal-delay-1">
+        <div class="art-thumb" style="background:linear-gradient(135deg,#1a1a1a,#3a3a3a);">💳<span class="art-thumb-tag">Foundations</span></div>
+        <div class="art-body">
+          <h3>Saving vs Investing — What's the Difference?</h3>
+          <p>Why confusing these two things costs Germans a fortune over a lifetime. The simple rule for knowing which one to use and exactly when.</p>
+          <div class="art-meta"><span>📖 9 min</span><span>🆓 Free</span></div>
+          <span class="art-read">Read article →</span>
+        </div>
+      </a>
+      <div class="art-card reveal reveal-delay-2" style="background:linear-gradient(135deg,var(--navy),var(--navy-mid));cursor:default;">
+        <div class="art-thumb" style="background:rgba(255,255,255,0.04);">✏️</div>
+        <div class="art-body">
+          <h3 style="color:var(--white);">More Articles Coming Soon</h3>
+          <p style="color:rgba(255,255,255,0.5);">New articles published regularly covering diversification, inflation, behavioural finance, risk management, and more. Subscribe to be notified.</p>
+          <a href="#" onclick="document.getElementById('signup-modal')&&Modal.show('signup-modal');return false;" class="btn btn-gold" style="margin-top:20px;font-size:13px;">Get Notified →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div id="footer-ph"></div>
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('nav-ph').innerHTML=renderNav('articles');
+  document.getElementById('modal-ph').innerHTML=renderModals();
+  document.getElementById('ticker-ph').innerHTML=renderTicker();
+  document.getElementById('footer-ph').innerHTML=renderFooter();
+</script>
+</body>
+</html>

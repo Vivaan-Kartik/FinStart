@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — FinStart</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .legal-hero{background:var(--navy);padding:140px 0 60px;text-align:center}
+    .legal-hero h1{color:var(--white);font-size:clamp(32px,4vw,52px)}
+    .legal-hero p{color:rgba(255,255,255,0.5);margin-top:10px}
+    .legal-body{max-width:780px;margin:0 auto;padding:72px 48px 100px;background:var(--cream)}
+    .legal-body h2{font-size:26px;color:var(--navy);margin:40px 0 12px;padding-top:40px;border-top:1px solid var(--border-light)}
+    .legal-body h2:first-child{margin-top:0;padding-top:0;border-top:none}
+    .legal-body p,.legal-body li{font-size:15px;line-height:1.8;color:var(--text-mid);margin-bottom:14px}
+    .legal-body ul{padding-left:22px;margin-bottom:16px}
+    .legal-date{font-size:13px;color:var(--text-muted);margin-bottom:32px}
+    @media(max-width:600px){.legal-body{padding:48px 20px 80px}}
+  </style>
+</head>
+<body>
+<div id="nav-ph"></div><div id="modal-ph"></div>
+<header class="legal-hero">
+  <div class="container">
+    <h1>Terms of <em>Service</em></h1>
+    <p>The rules for using FinStart</p>
+  </div>
+</header>
+<div id="ticker-ph"></div>
+<div class="legal-body">
+  <p class="legal-date">Last updated: January 2025</p>
+  <h2>1. Educational Purpose — Not Financial Advice</h2>
+  <p><strong>This is the most important section of these terms. Please read it carefully.</strong></p>
+  <p>All content on FinStart — including but not limited to articles, guides, investor profile results, model portfolios, ETF signal data, news summaries, calculator outputs, and any AI-generated content — is provided for educational and informational purposes only.</p>
+  <p>Nothing on FinStart constitutes financial advice, investment advice, tax advice, legal advice, or any form of personalised recommendation. FinStart is not a regulated financial advisor, investment firm, or financial services provider of any kind.</p>
+  <p>You should not make any investment decision based solely on content from FinStart. Always conduct your own research and consult with a qualified, licensed financial professional before making investment decisions. Past performance of any index, ETF, or investment strategy referenced on this platform does not guarantee future results.</p>
+  <h2>2. No Guarantee of Accuracy</h2>
+  <p>We make reasonable efforts to ensure all content is accurate and up to date. However, financial markets, tax rules, broker policies, and regulatory requirements change constantly. We cannot guarantee that every piece of information on this platform is current and accurate at the time you read it. Always verify important information with primary sources (your broker, the relevant tax authority, or a qualified professional).</p>
+  <h2>3. User Accounts</h2>
+  <p>You are responsible for maintaining the security of your account credentials. You must not share your login details or allow others to access your account. You must provide accurate information when creating your account. You must be at least 13 years of age to create an account. FinStart reserves the right to suspend or terminate accounts that violate these terms.</p>
+  <h2>4. Premium Subscriptions</h2>
+  <p>Premium subscriptions are processed via Stripe and are billed monthly or annually as selected. You may cancel at any time — cancellation takes effect at the end of the current billing period. No refunds are provided for partial billing periods. Prices may change with 30 days notice.</p>
+  <h2>5. Intellectual Property</h2>
+  <p>All content on FinStart — including articles, guides, tools, graphics, and branding — is the intellectual property of FinStart and may not be reproduced, distributed, or used commercially without written permission. Digital products (spreadsheets, PDFs) are licensed for personal use only and may not be resold or redistributed.</p>
+  <h2>6. Limitation of Liability</h2>
+  <p>FinStart is provided "as is." To the fullest extent permitted by law, FinStart and its operators accept no liability for any losses, damages, or consequences resulting from reliance on information published on this platform. This includes but is not limited to: investment losses, missed opportunities, tax consequences, or decisions made based on educational content provided here.</p>
+  <h2>7. Affiliate Disclosures</h2>
+  <p>FinStart may receive affiliate commissions from broker referral links on the Products page. These commissions do not affect the cost to you, and we only recommend platforms we have researched and believe to be suitable for our audience. All affiliate relationships are clearly disclosed at the point of the relevant link.</p>
+  <h2>8. Governing Law</h2>
+  <p>These terms are governed by the laws of Germany. Any disputes shall be resolved under German jurisdiction.</p>
+  <h2>9. Changes to These Terms</h2>
+  <p>We may update these terms periodically. Continued use of FinStart following notification of changes constitutes acceptance of the updated terms. For questions: hello@finstart.de</p>
+</div>
+<div id="footer-ph"></div>
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('nav-ph').innerHTML=renderNav('');
+  document.getElementById('modal-ph').innerHTML=renderModals();
+  document.getElementById('ticker-ph').innerHTML=renderTicker();
+  document.getElementById('footer-ph').innerHTML=renderFooter();
+</script>
+</body>
+</html>

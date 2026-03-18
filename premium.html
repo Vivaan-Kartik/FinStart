@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium — FinStart</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .premium-hero {
+      background: var(--navy); padding: 140px 0 80px; text-align: center; position: relative; overflow: hidden;
+    }
+    .premium-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(184,135,58,0.1) 0%, transparent 70%);
+    }
+    .premium-hero h1 { color: var(--white); position: relative; z-index: 1; }
+    .premium-hero p  { color: rgba(255,255,255,0.55); font-size: 18px; max-width: 520px; margin: 16px auto 0; position: relative; z-index: 1; }
+
+    .pricing-section { background: var(--cream); padding: 80px 0; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 800px;
+      margin: 48px auto 0;
+    }
+    .pricing-card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      position: relative;
+    }
+    .pricing-card.featured {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold), var(--shadow-lg);
+    }
+    .pricing-popular {
+      position: absolute;
+      top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 16px; border-radius: 100px;
+      white-space: nowrap;
+    }
+    .pricing-plan { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .pricing-price { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 700; color: var(--navy); line-height: 1; }
+    .pricing-price span { font-size: 16px; font-family: 'Outfit', sans-serif; color: var(--text-muted); }
+    .pricing-desc { font-size: 14px; color: var(--text-muted); margin-top: 8px; margin-bottom: 28px; }
+    .pricing-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .pricing-feature { font-size: 14px; display: flex; align-items: center; gap: 10px; }
+    .pricing-feature .tick { width: 20px; height: 20px; background: rgba(46,160,67,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+    .pricing-feature .cross { width: 20px; height: 20px; background: var(--cream-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; color: var(--text-muted); }
+
+    .features-section { background: var(--cream-dark); padding: 80px 0; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      transition: all 0.25s;
+    }
+    .feature-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .feature-icon { font-size: 28px; margin-bottom: 16px; }
+    .feature-card h4 { font-size: 18px; color: var(--navy); margin-bottom: 10px; }
+    .feature-card p  { font-size: 13px; line-height: 1.65; }
+
+    .news-preview {
+      background: var(--navy);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 48px;
+    }
+    .news-header {
+      background: rgba(255,255,255,0.04);
+      padding: 20px 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .news-header span { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bright); }
+    .news-items { display: flex; flex-direction: column; }
+    .news-item {
+      padding: 18px 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: grid; grid-template-columns: auto 1fr auto;
+      gap: 16px; align-items: center;
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-tag { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: rgba(184,135,58,0.15); color: var(--gold-bright); white-space: nowrap; }
+    .news-title { font-size: 14px; color: rgba(255,255,255,0.8); }
+    .news-time  { font-size: 11px; color: rgba(255,255,255,0.3); white-space: nowrap; }
+    .news-blurred { filter: blur(4px); pointer-events: none; }
+
+    @media (max-width: 700px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 500px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="nav-ph"></div>
+<div id="modal-ph"></div>
+
+<header class="premium-hero">
+  <div class="container">
+    <div class="badge" style="margin-bottom:20px;"><span class="badge-dot"></span>Premium Access</div>
+    <h1>Unlock the Full <em>Experience.</em></h1>
+    <p>Live news, model portfolios, ETF ratings, and all digital products — everything you need to go from beginner to informed investor.</p>
+  </div>
+</header>
+
+<div id="ticker-ph"></div>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="label">Pricing</div>
+      <h2>Simple, <em>transparent</em> pricing.</h2>
+      <p style="margin-top:12px;">Start free. Upgrade when you are ready.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="pricing-plan">Free</div>
+        <div class="pricing-price">€0<span>/month</span></div>
+        <div class="pricing-desc">Everything you need to start learning about investing.</div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><div class="tick">✓</div>Full educational content library</div>
+          <div class="pricing-feature"><div class="tick">✓</div>Investor profile quiz</div>
+          <div class="pricing-feature"><div class="tick">✓</div>Investment growth calculator</div>
+          <div class="pricing-feature"><div class="tick">✓</div>All articles and guides</div>
+          <div class="pricing-feature"><div class="tick">✓</div>Vocabulary reference</div>
+          <div class="pricing-feature"><div class="cross">✗</div><span style="color:var(--text-muted)">Live financial news feed</span></div>
+          <div class="pricing-feature"><div class="cross">✗</div><span style="color:var(--text-muted)">Model portfolios</span></div>
+          <div class="pricing-feature"><div class="cross">✗</div><span style="color:var(--text-muted)">ETF signal database</span></div>
+          <div class="pricing-feature"><div class="cross">✗</div><span style="color:var(--text-muted)">All digital products included</span></div>
+        </div>
+        <a href="learn.html" class="btn btn-ghost" style="width:100%;justify-content:center;">Start Free →</a>
+      </div>
+      <div class="pricing-card featured reveal reveal-delay-1">
+        <div class="pricing-popular">Most Popular</div>
+        <div class="pricing-plan">Premium</div>
+        <div class="pricing-price">€5<span>/month</span></div>
+        <div class="pricing-desc">The complete FinStart experience. Cancel anytime.</div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><div class="tick">✓</div>Everything in Free</div>
+          <div class="pricing-feature"><div class="tick">✓</div>Live financial news feed (AI-summarised)</div>
+          <div class="pricing-feature"><div class="tick">✓</div>Monthly updated model portfolios</div>
+          <div class="pricing-feature"><div class="tick">✓</div>ETF & equity signal database</div>
+          <div class="pricing-feature"><div class="tick">✓</div>All digital products included</div>
+          <div class="pricing-feature"><div class="tick">✓</div>Advanced company analysis modules</div>
+          <div class="pricing-feature"><div class="tick">✓</div>Monthly Insight Report PDF</div>
+          <div class="pricing-feature"><div class="tick">✓</div>Priority support</div>
+        </div>
+        <button class="btn btn-gold" style="width:100%;justify-content:center;" onclick="handleUpgrade()">Upgrade to Premium →</button>
+        <p style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:12px;">Secure payment via Stripe · Cancel anytime</p>
+      </div>
+    </div>
+    <div style="max-width:800px;margin:24px auto 0;" class="reveal">
+      <div class="disclaimer">
+        <strong>Annual option:</strong> Save with annual billing at €40/year (equivalent to €3.33/month). Contact us at hello@finstart.de to set up annual billing.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="label">What You Get</div>
+      <h2>Every Premium <em>feature,</em> explained.</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">📰</div>
+        <h4>Live Financial News</h4>
+        <p>Daily financial news from global sources, summarised by AI and personalised to your profile. Filter by region, asset class, or topic. Never miss a relevant development.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">📊</div>
+        <h4>Model Portfolios</h4>
+        <p>Monthly updated hypothetical portfolios for conservative, balanced, and aggressive profiles with regional variants. Clearly labelled as educational examples — not personal advice.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">🔍</div>
+        <h4>ETF Signal Database</h4>
+        <p>A searchable database of ETFs available in Germany with educational buy/hold/sell model signals based on simple momentum and valuation metrics. Methodology fully disclosed.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📦</div>
+        <h4>All Digital Products</h4>
+        <p>Full access to every digital product — the investment calculator, budget tracker, ETF comparison sheet, and all future products — included in your Premium subscription.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">🧠</div>
+        <h4>Advanced Learning Modules</h4>
+        <p>Unlock all advanced content across company analysis, behavioural finance, portfolio construction, and sector analysis — the full FinStart curriculum.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">📄</div>
+        <h4>Monthly Insight Report</h4>
+        <p>A beautiful PDF delivered each month covering key market developments, a featured ETF deep dive, model portfolio updates, and a practical lesson for the month.</p>
+      </div>
+    </div>
+
+    <!-- NEWS PREVIEW -->
+    <div class="reveal" style="margin-top:60px;">
+      <div class="label">Preview</div>
+      <h3 style="font-size:28px;color:var(--navy);margin-bottom:8px;">What the <em>news feed</em> looks like.</h3>
+      <div style="position:relative;">
+        <div class="news-preview">
+          <div class="news-header">
+            <span>Financial News — Today</span>
+            <span style="font-size:12px;color:rgba(255,255,255,0.3);">Updated hourly</span>
+          </div>
+          <div class="news-items">
+            <div class="news-item">
+              <span class="news-tag">Markets</span>
+              <span class="news-title">DAX hits new high as German manufacturing data beats expectations</span>
+              <span class="news-time">2 hours ago</span>
+            </div>
+            <div class="news-item">
+              <span class="news-tag">ETFs</span>
+              <span class="news-title">MSCI World ETF inflows reach record levels as retail participation surges</span>
+              <span class="news-time">4 hours ago</span>
+            </div>
+            <div class="news-item news-blurred">
+              <span class="news-tag">ECB</span>
+              <span class="news-title">European Central Bank signals rate path for coming quarters</span>
+              <span class="news-time">6 hours ago</span>
+            </div>
+            <div class="news-item news-blurred">
+              <span class="news-tag">Germany</span>
+              <span class="news-title">German household savings rate reaches decade low as investing grows</span>
+              <span class="news-time">8 hours ago</span>
+            </div>
+          </div>
+        </div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,var(--cream-dark),transparent);display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px;">
+          <button onclick="handleUpgrade()" class="btn btn-gold">Unlock Full News Feed →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-ph"></div>
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('nav-ph').innerHTML    = renderNav('premium');
+  document.getElementById('modal-ph').innerHTML  = renderModals();
+  document.getElementById('ticker-ph').innerHTML = renderTicker();
+  document.getElementById('footer-ph').innerHTML = renderFooter();
+
+  function handleUpgrade() {
+    if (!Auth.isLoggedIn()) {
+      Modal.show('signup-modal');
+      showToast('Create a free account first, then upgrade to Premium.');
+      return;
+    }
+    // ── STRIPE CHECKOUT ──
+    // Replace with your actual Stripe payment link
+    // window.location.href = 'https://buy.stripe.com/YOUR_STRIPE_LINK';
+    showToast('Redirecting to secure Stripe checkout...');
+    setTimeout(() => {
+      window.open('https://buy.stripe.com/YOUR_STRIPE_PAYMENT_LINK', '_blank');
+    }, 800);
+  }
+</script>
+</body>
+</html>

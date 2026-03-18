@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn — FinStart</title>
+  <meta name="description" content="Structured financial education modules for young Germans. From complete beginner to confident investor.">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .learn-hero {
+      background: var(--navy);
+      padding: 140px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .learn-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(184,135,58,0.07) 0%, transparent 70%);
+    }
+    .learn-hero h1 { color: var(--white); position: relative; z-index: 1; }
+    .learn-hero p  { color: rgba(255,255,255,0.55); font-size: 18px; max-width: 560px; margin: 16px auto 0; position: relative; z-index: 1; }
+
+    .modules { padding: 80px 0; background: var(--cream); }
+
+    .module-block { margin-bottom: 72px; }
+    .module-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--border);
+    }
+    .module-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .module-header h2 { font-size: 32px; color: var(--navy); }
+    .module-header p  { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .topic-card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: all 0.25s;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+    .topic-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--gold); }
+    .topic-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .topic-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--navy); margin-bottom: 8px; }
+    .topic-card p  { font-size: 13px; line-height: 1.6; }
+    .topic-tag {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+    .tag-free    { background: rgba(46,160,67,0.12); color: #2ea043; }
+    .tag-premium { background: rgba(184,135,58,0.12); color: var(--gold-bright); }
+
+    .vocab-section { background: var(--cream-dark); padding: 80px 0; }
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .vocab-card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .vocab-term {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .vocab-def { font-size: 13px; line-height: 1.65; }
+
+    @media (max-width: 900px) {
+      .topics-grid { grid-template-columns: 1fr 1fr; }
+      .vocab-grid  { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .topics-grid { grid-template-columns: 1fr; }
+      .vocab-grid  { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="nav-ph"></div>
+<div id="modal-ph"></div>
+
+<header class="learn-hero">
+  <div class="container">
+    <div class="badge" style="margin-bottom:20px;"><span class="badge-dot"></span>Self-Paced Learning</div>
+    <h1>Learn Finance <em>From Zero.</em></h1>
+    <p>Structured modules from complete beginner to confident investor. Start anywhere. Learn at your own pace. Everything free.</p>
+  </div>
+</header>
+
+<div id="ticker-ph"></div>
+
+<section class="modules" id="foundations">
+  <div class="container">
+
+    <!-- MODULE A -->
+    <div class="module-block reveal" id="foundations">
+      <div class="module-header">
+        <div class="module-icon">🏗️</div>
+        <div>
+          <h2>Module A — Financial Foundations</h2>
+          <p>The concepts every adult should know — explained simply so you can learn them at 16.</p>
+        </div>
+      </div>
+      <div class="topics-grid">
+        <a href="articles/saving-vs-investing.html" class="topic-card">
+          <div class="topic-num">A.1</div>
+          <h4>Saving vs Investing — What's the Difference?</h4>
+          <p>Why these two things are fundamentally different and why confusing them costs people a fortune over a lifetime.</p>
+          <span class="topic-tag tag-free">Free</span>
+        </a>
+        <a href="articles/etf-guide.html" class="topic-card">
+          <div class="topic-num">A.2</div>
+          <h4>Stocks, Bonds, ETFs and Mutual Funds</h4>
+          <p>The four main investment asset types explained clearly — what each one is, how it works, and who it suits.</p>
+          <span class="topic-tag tag-free">Free</span>
+        </a>
+        <a href="articles/risk-return.html" class="topic-card">
+          <div class="topic-num">A.3</div>
+          <h4>Risk vs Return</h4>
+          <p>Why higher potential returns always come with higher risk — and how to find the balance that suits your situation.</p>
+          <span class="topic-tag tag-free">Free</span>
+        </a>
+        <a href="articles/inflation.html" class="topic-card">
+          <div class="topic-num">A.4</div>
+          <h4>Inflation and Interest Rates</h4>
+          <p>How inflation silently erodes your savings and why understanding it changes everything about how you should hold money.</p>
+          <span class="topic-tag tag-free">Free</span>
+        </a>
+        <a href="articles/compound-interest.html" class="topic-card">
+          <div class="topic-num">A.5</div>
+          <h4>Compound Interest</h4>
+          <p>The most powerful concept in personal finance. Why starting young is not just good advice — it is mathematically transformative.</p>
+          <span class="topic-tag tag-free">Free</span>
+        </a>
+        <a href="articles/diversification.html" class="topic-card">
+          <div class="topic-num">A.6</div>
+          <h4>Diversification</h4>
+          <p>Why not putting all your eggs in one basket is the foundation of smart investing — and how ETFs do it for you automatically.</p>
+          <span class="topic-tag tag-free">Free</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- MODULE B -->
+    <div class="module-block reveal" id="markets">
+      <div class="module-header">
+        <div class="module-icon">🌍</div>
+        <div>
+          <h2>Module B — Market Literacy</h2>
+          <p>Understanding the global financial system — where markets are, what indices mean, and how it all connects.</p>
+        </div>
+      </div>
+      <div class="topics-grid">
+        <a href="articles/etf-guide.html" class="topic-card">
+          <div class="topic-num">B.1</div>
+          <h4>What Stock Markets Exist and How They Work</h4>
+          <p>US, Europe, Asia, and emerging markets — the global investment landscape explained clearly for beginners.</p>
+          <span class="topic-tag tag-free">Free</span>
+        </a>
+        <a href="articles/msci-world.html" class="topic-card">
+          <div class="topic-num">B.2</div>
+          <h4>What Indices Are — S&P 500, DAX, MSCI World</h4>
+          <p>The three most important indices for German investors explained. What they track, what is inside them, and why they matter.</p>
+          <span class="topic-tag tag-free">Free</span>
+        </a>
+        <a href="articles/etf-guide.html" class="topic-card">
+          <div class="topic-num">B.3</div>
+          <h4>How ETFs Work — Deep Dive</h4>
+          <p>Beyond the basics — accumulating vs distributing, TER, index replication methods, and what to look for when choosing.</p>
+          <span class="topic-tag tag-free">Free</span>
+        </a>
+        <div class="topic-card" onclick="Modal.show('signup-modal')">
+          <div class="topic-num">B.4</div>
+          <h4>Market Capitalisation — What It Means</h4>
+          <p>Large cap, mid cap, small cap — what these mean, why they behave differently, and how weighting affects your ETF.</p>
+          <span class="topic-tag tag-premium">Free with Account</span>
+        </div>
+        <div class="topic-card" onclick="Modal.show('signup-modal')">
+          <div class="topic-num">B.5</div>
+          <h4>Bull Markets, Bear Markets and Corrections</h4>
+          <p>How to understand market cycles — what they are, how long they historically last, and what to do during each one.</p>
+          <span class="topic-tag tag-premium">Free with Account</span>
+        </div>
+        <div class="topic-card" onclick="Modal.show('signup-modal')">
+          <div class="topic-num">B.6</div>
+          <h4>Currency Risk and International Investing</h4>
+          <p>How exchange rates affect your international investments and when (and whether) hedging makes sense.</p>
+          <span class="topic-tag tag-premium">Free with Account</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE C -->
+    <div class="module-block reveal" id="analysis">
+      <div class="module-header">
+        <div class="module-icon">🔬</div>
+        <div>
+          <h2>Module C — Company Analysis</h2>
+          <p>For those who want to go beyond ETFs and understand individual companies. Non-AI, research-based content.</p>
+        </div>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-card" onclick="Modal.show('signup-modal')">
+          <div class="topic-num">C.1</div>
+          <h4>Reading a Balance Sheet</h4>
+          <p>Assets, liabilities, equity — the three sections of every balance sheet explained so simply you can read one in minutes.</p>
+          <span class="topic-tag tag-premium">Free with Account</span>
+        </div>
+        <div class="topic-card" onclick="Modal.show('signup-modal')">
+          <div class="topic-num">C.2</div>
+          <h4>Revenue, Profit, and Margins</h4>
+          <p>The difference between a company making money and a company being valuable — and why the two are not the same thing.</p>
+          <span class="topic-tag tag-premium">Free with Account</span>
+        </div>
+        <div class="topic-card" onclick="Modal.show('signup-modal')">
+          <div class="topic-num">C.3</div>
+          <h4>PE Ratio, ROE, and Debt Ratios</h4>
+          <p>The three ratios that tell you the most about whether a company is cheap, efficient, or dangerously leveraged.</p>
+          <span class="topic-tag tag-premium">Free with Account</span>
+        </div>
+        <div class="topic-card" onclick="Modal.show('signup-modal')">
+          <div class="topic-num">C.4</div>
+          <h4>Moats and Competitive Advantage</h4>
+          <p>Warren Buffett's favourite concept — what makes some companies genuinely hard to compete with and why it matters for investors.</p>
+          <span class="topic-tag tag-premium">Free with Account</span>
+        </div>
+        <div class="topic-card" onclick="Modal.show('signup-modal')">
+          <div class="topic-num">C.5</div>
+          <h4>Red Flags to Watch For</h4>
+          <p>The warning signs in company filings, management behaviour, and financial statements that experienced investors know to avoid.</p>
+          <span class="topic-tag tag-premium">Free with Account</span>
+        </div>
+        <a href="premium.html" class="topic-card" style="background:linear-gradient(135deg,var(--navy),var(--navy-mid));border:none;">
+          <div class="topic-num" style="color:var(--gold-bright)">C.6+</div>
+          <h4 style="color:var(--white)">Advanced Analysis — Premium</h4>
+          <p style="color:rgba(255,255,255,0.55)">DCF valuation, cash flow analysis, reading earnings calls, sector-specific metrics and more.</p>
+          <span class="topic-tag tag-premium" style="background:var(--gold);color:var(--navy)">Premium</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- MODULE D -->
+    <div class="module-block reveal" id="mindset">
+      <div class="module-header">
+        <div class="module-icon">🧠</div>
+        <div>
+          <h2>Module D — Long-Term Thinking</h2>
+          <p>The psychology of investing — why most people underperform, and how to avoid their mistakes.</p>
+        </div>
+      </div>
+      <div class="topics-grid">
+        <a href="articles/compound-interest.html" class="topic-card">
+          <div class="topic-num">D.1</div>
+          <h4>The Power of Compounding</h4>
+          <p>A deep dive into the mathematics of compound growth — why time in the market is the most powerful variable of all.</p>
+          <span class="topic-tag tag-free">Free</span>
+        </a>
+        <div class="topic-card" onclick="Modal.show('signup-modal')">
+          <div class="topic-num">D.2</div>
+          <h4>Why Timing the Market Usually Fails</h4>
+          <p>The research behind why trying to buy at the bottom and sell at the top reliably underperforms just staying invested.</p>
+          <span class="topic-tag tag-premium">Free with Account</span>
+        </div>
+        <div class="topic-card" onclick="Modal.show('signup-modal')">
+          <div class="topic-num">D.3</div>
+          <h4>Common Beginner Mistakes</h4>
+          <p>The seven most expensive mistakes new investors make — and the simple habits that prevent each one.</p>
+          <span class="topic-tag tag-premium">Free with Account</span>
+        </div>
+        <div class="topic-card" onclick="Modal.show('signup-modal')">
+          <div class="topic-num">D.4</div>
+          <h4>Behavioural Finance Basics</h4>
+          <p>Loss aversion, herding, recency bias — the psychological traps that make even smart people make bad investment decisions.</p>
+          <span class="topic-tag tag-premium">Free with Account</span>
+        </div>
+        <div class="topic-card" onclick="Modal.show('signup-modal')">
+          <div class="topic-num">D.5</div>
+          <h4>Building an Investment Policy Statement</h4>
+          <p>How to write down your goals, risk tolerance, and rules before you start — and why this single document can save you thousands.</p>
+          <span class="topic-tag tag-premium">Free with Account</span>
+        </div>
+        <div class="topic-card" onclick="Modal.show('signup-modal')">
+          <div class="topic-num">D.6</div>
+          <h4>Rebalancing Your Portfolio</h4>
+          <p>What rebalancing is, how often to do it, and the tax-efficient way to do it in Germany.</p>
+          <span class="topic-tag tag-premium">Free with Account</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VOCABULARY -->
+<section class="vocab-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="label">Quick Reference</div>
+      <h2>Key <em>Terms</em> Explained</h2>
+      <p style="margin-top:12px;max-width:520px;">Every important finance term, explained in plain language. No jargon, no assumptions.</p>
+    </div>
+    <div class="vocab-grid">
+      <div class="vocab-card reveal">
+        <div class="vocab-term">ETF</div>
+        <div class="vocab-def">Exchange Traded Fund. A fund that holds many assets (like hundreds of company shares) and trades on a stock exchange. Buying one ETF gives you tiny ownership of everything inside it.</div>
+      </div>
+      <div class="vocab-card reveal reveal-delay-1">
+        <div class="vocab-term">Depot</div>
+        <div class="vocab-def">German word for a brokerage account — the account where you hold your investments such as ETFs and shares. You need one to start investing in Germany.</div>
+      </div>
+      <div class="vocab-card reveal reveal-delay-2">
+        <div class="vocab-term">Sparplan</div>
+        <div class="vocab-def">A German automatic investment plan. You set a fixed monthly amount, choose what to invest in, and the money is invested automatically every month without you doing anything.</div>
+      </div>
+      <div class="vocab-card reveal">
+        <div class="vocab-term">MSCI World</div>
+        <div class="vocab-def">An index tracking 1,500+ companies across 23 developed countries. Often used as the basis for beginner ETFs because it provides broad global diversification in a single fund.</div>
+      </div>
+      <div class="vocab-card reveal reveal-delay-1">
+        <div class="vocab-term">TER</div>
+        <div class="vocab-def">Total Expense Ratio. The annual fee an ETF charges, expressed as a percentage. A TER of 0.20% means you pay €2 per year for every €1,000 invested. Lower is better.</div>
+      </div>
+      <div class="vocab-card reveal reveal-delay-2">
+        <div class="vocab-term">Thesaurierend</div>
+        <div class="vocab-def">German for "accumulating." An accumulating ETF automatically reinvests dividends back into the fund rather than paying them out — maximising compound growth.</div>
+      </div>
+      <div class="vocab-card reveal">
+        <div class="vocab-term">Ausschüttend</div>
+        <div class="vocab-def">German for "distributing." A distributing ETF pays dividends out to you as cash. You then owe Kapitalertragsteuer on those payments in Germany.</div>
+      </div>
+      <div class="vocab-card reveal reveal-delay-1">
+        <div class="vocab-term">Kapitalertragsteuer</div>
+        <div class="vocab-def">German capital gains tax. A flat 25% tax on investment profits plus solidarity surcharge, making the effective rate ~26.375%. The first €1,000/year is tax-free (Sparerpauschbetrag).</div>
+      </div>
+      <div class="vocab-card reveal reveal-delay-2">
+        <div class="vocab-term">Freistellungsauftrag</div>
+        <div class="vocab-def">A form you submit to your broker allowing up to €1,000 of investment gains per year to be tax-free. Always submit this when opening a new Depot in Germany.</div>
+      </div>
+      <div class="vocab-card reveal">
+        <div class="vocab-term">Dividende</div>
+        <div class="vocab-def">A cash payment companies make to shareholders from their profits. ETFs either pay these out (ausschüttend) or reinvest them automatically (thesaurierend).</div>
+      </div>
+      <div class="vocab-card reveal reveal-delay-1">
+        <div class="vocab-term">Volatilität</div>
+        <div class="vocab-def">Volatility. How much an investment's price fluctuates up and down. Higher volatility means bigger swings in value — typically associated with higher potential returns but also higher risk.</div>
+      </div>
+      <div class="vocab-card reveal reveal-delay-2">
+        <div class="vocab-term">Rebalancing</div>
+        <div class="vocab-def">Periodically adjusting your portfolio back to your target allocation. If stocks rise and become a larger share of your portfolio than intended, rebalancing means selling some stocks and buying more bonds.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-ph"></div>
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('nav-ph').innerHTML    = renderNav('learn');
+  document.getElementById('modal-ph').innerHTML  = renderModals();
+  document.getElementById('ticker-ph').innerHTML = renderTicker();
+  document.getElementById('footer-ph').innerHTML = renderFooter();
+</script>
+</body>
+</html>

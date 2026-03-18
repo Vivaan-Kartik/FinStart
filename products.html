@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products — FinStart</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .products-hero {
+      background: var(--navy); padding: 140px 0 80px; text-align: center; position: relative; overflow: hidden;
+    }
+    .products-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(184,135,58,0.08) 0%, transparent 70%);
+    }
+    .products-hero h1 { color: var(--white); position: relative; z-index: 1; }
+    .products-hero p  { color: rgba(255,255,255,0.55); font-size: 18px; max-width: 520px; margin: 16px auto 0; position: relative; z-index: 1; }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .product-card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s;
+    }
+    .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+    .product-card.featured { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+
+    .product-thumb {
+      height: 140px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 56px;
+      position: relative;
+    }
+    .product-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px; border-radius: 100px;
+    }
+    .product-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .product-body h3 { font-size: 20px; color: var(--navy); margin-bottom: 10px; }
+    .product-body p  { font-size: 13px; line-height: 1.65; flex: 1; }
+    .product-features { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+    .product-feature { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 7px; }
+    .product-feature::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+    .product-footer {
+      padding: 20px 24px;
+      border-top: 1px solid var(--border-light);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 700; color: var(--navy);
+    }
+    .product-price span { font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text-muted); }
+
+    .bundle-card {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border: 1px solid rgba(184,135,58,0.3);
+      border-radius: var(--radius-xl);
+      padding: 44px 52px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: center;
+    }
+    .bundle-card h3 { font-size: 32px; color: var(--white); margin-bottom: 12px; }
+    .bundle-card p  { color: rgba(255,255,255,0.55); font-size: 15px; }
+    .bundle-features {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8px; margin-top: 20px;
+    }
+    .bundle-feature { font-size: 13px; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 7px; }
+    .bundle-feature::before { content: '✓'; color: var(--gold-bright); font-weight: 700; flex-shrink: 0; }
+    .bundle-cta { text-align: center; flex-shrink: 0; }
+    .bundle-price { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 700; color: var(--gold-bright); }
+    .bundle-price span { font-size: 20px; font-family: 'Outfit', sans-serif; color: rgba(255,255,255,0.5); }
+    .bundle-saving { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; margin-bottom: 20px; }
+
+    .affiliate-section { background: var(--cream-dark); padding: 80px 0; }
+    .affiliate-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+    .affiliate-card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-align: center;
+      transition: all 0.25s;
+    }
+    .affiliate-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .affiliate-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .affiliate-desc { font-size: 13px; line-height: 1.6; margin-bottom: 16px; }
+    .affiliate-note { font-size: 11px; color: var(--text-muted); font-style: italic; }
+
+    @media (max-width: 900px) {
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .bundle-card { grid-template-columns: 1fr; gap: 28px; padding: 32px; }
+    }
+    @media (max-width: 600px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .affiliate-grid { grid-template-columns: 1fr; }
+      .bundle-features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="nav-ph"></div>
+<div id="modal-ph"></div>
+
+<header class="products-hero">
+  <div class="container">
+    <div class="badge" style="margin-bottom:20px;"><span class="badge-dot"></span>Digital Tools</div>
+    <h1>Tools That <em>Work for You.</em></h1>
+    <p>Practical financial tools built for young German investors. Buy once, use forever. All educational — not financial advice.</p>
+  </div>
+</header>
+
+<div id="ticker-ph"></div>
+
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="reveal">
+      <div class="label">Digital Products</div>
+      <h2>Everything you need to <em>start.</em></h2>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card featured reveal">
+        <div class="product-thumb" style="background:linear-gradient(135deg,#0c1e35,#1e4268);">
+          📊
+          <span class="product-badge">Best Seller</span>
+        </div>
+        <div class="product-body">
+          <h3>Investment Growth Calculator</h3>
+          <p>A professional Google Sheets / Excel calculator. Enter your starting amount, monthly contribution, return rate, and time horizon — see year-by-year growth with a full chart.</p>
+          <div class="product-features">
+            <div class="product-feature">Year-by-year growth table</div>
+            <div class="product-feature">Inflation-adjusted values</div>
+            <div class="product-feature">Interactive growth chart</div>
+            <div class="product-feature">PDF guide included</div>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div><div class="product-price">€10<span> one-time</span></div></div>
+          <a href="YOUR_CALCULATOR_GUMROAD_LINK" target="_blank" class="btn btn-gold" style="font-size:13px;padding:11px 20px;">Buy on Gumroad →</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-thumb" style="background:linear-gradient(135deg,#0f2a0f,#1a4a1a);">💰</div>
+        <div class="product-body">
+          <h3>Personal Budget Tracker</h3>
+          <p>A clean, German-specific budget tracker in Google Sheets. Track income, fixed and variable expenses, and savings goals with a monthly summary dashboard.</p>
+          <div class="product-features">
+            <div class="product-feature">German-specific categories</div>
+            <div class="product-feature">Monthly summary dashboard</div>
+            <div class="product-feature">Savings goal tracker</div>
+            <div class="product-feature">Expense breakdown chart</div>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div><div class="product-price">€12<span> one-time</span></div></div>
+          <a href="YOUR_BUDGET_GUMROAD_LINK" target="_blank" class="btn btn-gold" style="font-size:13px;padding:11px 20px;">Buy on Gumroad →</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-2">
+        <div class="product-thumb" style="background:linear-gradient(135deg,#1a0c2e,#3a1a5a);">🔍</div>
+        <div class="product-body">
+          <h3>ETF Comparison Sheet</h3>
+          <p>Pre-filled with 30+ ETFs available in Germany. Compare by TER, index tracked, fund size, domicile, and Sparplan eligibility at major German brokers.</p>
+          <div class="product-features">
+            <div class="product-feature">30+ German-available ETFs</div>
+            <div class="product-feature">Side-by-side comparison</div>
+            <div class="product-feature">Broker availability table</div>
+            <div class="product-feature">Updated semi-annually</div>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div><div class="product-price">€15<span> one-time</span></div></div>
+          <a href="YOUR_ETF_GUMROAD_LINK" target="_blank" class="btn btn-gold" style="font-size:13px;padding:11px 20px;">Buy on Gumroad →</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-thumb" style="background:linear-gradient(135deg,#2a1a0e,#5a3a18);">🎓</div>
+        <div class="product-body">
+          <h3>Abitur Economics Study Kit</h3>
+          <p>A structured Notion workspace for students doing Wirtschaft or business studies. Company analysis frameworks, key ratios explained, research templates, and revision checklists.</p>
+          <div class="product-features">
+            <div class="product-feature">Company analysis framework</div>
+            <div class="product-feature">Key ratios cheat sheet</div>
+            <div class="product-feature">Research note templates</div>
+            <div class="product-feature">Exam revision checklists</div>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div><div class="product-price">€10<span> one-time</span></div></div>
+          <a href="YOUR_ABITUR_GUMROAD_LINK" target="_blank" class="btn btn-gold" style="font-size:13px;padding:11px 20px;">Buy on Gumroad →</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-thumb" style="background:linear-gradient(135deg,#0a1a2e,#12304e);">📰</div>
+        <div class="product-body">
+          <h3>Monthly Insight Report</h3>
+          <p>A monthly PDF covering key market developments, one featured ETF or asset class, a model portfolio update, and a beginner lesson of the month. Delivered to your inbox.</p>
+          <div class="product-features">
+            <div class="product-feature">Monthly market overview</div>
+            <div class="product-feature">Featured ETF deep dive</div>
+            <div class="product-feature">Beginner lesson each month</div>
+            <div class="product-feature">Cancel anytime</div>
+          </div>
+        </div>
+        <div class="product-footer">
+          <div><div class="product-price">€5<span>/month</span></div></div>
+          <a href="YOUR_REPORT_GUMROAD_LINK" target="_blank" class="btn btn-gold" style="font-size:13px;padding:11px 20px;">Subscribe →</a>
+        </div>
+      </div>
+
+      <!-- Bundle -->
+      <div class="bundle-card reveal">
+        <div>
+          <div class="label" style="color:var(--gold-bright)">Best Value</div>
+          <h3>First Investment <em style="color:var(--gold-bright)">Starter Kit</em></h3>
+          <p>Everything a beginner needs to start investing in Germany. The calculator, budget tracker, ETF comparison sheet, and a full written guide bundled together at a significant saving.</p>
+          <div class="bundle-features">
+            <div class="bundle-feature">Investment Growth Calculator</div>
+            <div class="bundle-feature">Personal Budget Tracker</div>
+            <div class="bundle-feature">ETF Comparison Sheet</div>
+            <div class="bundle-feature">Beginner's Getting Started PDF</div>
+            <div class="bundle-feature">Risk tolerance quiz PDF</div>
+            <div class="bundle-feature">Model portfolio examples</div>
+          </div>
+        </div>
+        <div class="bundle-cta">
+          <div class="bundle-price">€29<span> one-time</span></div>
+          <div class="bundle-saving">Save €8 vs buying separately</div>
+          <a href="YOUR_BUNDLE_GUMROAD_LINK" target="_blank" class="btn btn-gold">Get the Bundle →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AFFILIATE -->
+<section class="affiliate-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="label">Recommended Brokers</div>
+      <h2>Where to <em>start</em> investing.</h2>
+      <p style="margin-top:12px;max-width:560px;">These are the brokers we recommend for young German investors. These are affiliate links — we earn a small commission if you sign up, at no cost to you. We only recommend platforms we genuinely believe in.</p>
+    </div>
+    <div class="affiliate-grid">
+      <div class="affiliate-card reveal">
+        <div class="affiliate-name">Trade Republic</div>
+        <div class="affiliate-desc">Germany's most popular app-based broker. Sparpläne from €1/month, no account fees, easy to use. Best for young investors getting started. Note: requires age 18.</div>
+        <a href="#" class="btn btn-navy" style="font-size:13px;padding:11px 20px;display:inline-flex;margin-bottom:12px;">Open Account →</a>
+        <div class="affiliate-note">*Affiliate link — we may earn a commission</div>
+      </div>
+      <div class="affiliate-card reveal reveal-delay-1">
+        <div class="affiliate-name">Scalable Capital</div>
+        <div class="affiliate-desc">Feature-rich broker with excellent ETF selection. Free plan available with Sparpläne from €1. Great for those who want more depth and analytics. Age 18+ required.</div>
+        <a href="#" class="btn btn-navy" style="font-size:13px;padding:11px 20px;display:inline-flex;margin-bottom:12px;">Open Account →</a>
+        <div class="affiliate-note">*Affiliate link — we may earn a commission</div>
+      </div>
+      <div class="affiliate-card reveal reveal-delay-2">
+        <div class="affiliate-name">ING Juniordepot</div>
+        <div class="affiliate-desc">One of the best options for investors under 18. Supports Minderjährigendepot with parental co-signing. Sparpläne from €1. Backed by a major established bank.</div>
+        <a href="#" class="btn btn-navy" style="font-size:13px;padding:11px 20px;display:inline-flex;margin-bottom:12px;">Open Account →</a>
+        <div class="affiliate-note">*Affiliate link — we may earn a commission</div>
+      </div>
+    </div>
+    <div style="margin-top:28px;" class="reveal">
+      <div class="disclaimer">
+        <strong>Affiliate disclosure:</strong> The broker links above are affiliate links. If you open an account through these links, FinStart may receive a commission from the broker. This does not affect the cost to you in any way. We only recommend brokers we have researched and believe are suitable for beginner investors in Germany. This is not a personalised recommendation — always research brokers yourself before opening an account.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-ph"></div>
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('nav-ph').innerHTML    = renderNav('products');
+  document.getElementById('modal-ph').innerHTML  = renderModals();
+  document.getElementById('ticker-ph').innerHTML = renderTicker();
+  document.getElementById('footer-ph').innerHTML = renderFooter();
+</script>
+</body>
+</html>
