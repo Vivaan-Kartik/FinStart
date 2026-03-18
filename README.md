@@ -55,47 +55,6 @@ Also update YouTube link in `index.html` (search for "YOUR_YOUTUBE_CHANNEL_LINK"
 href="YOUR_YOUTUBE_CHANNEL_LINK"
 ```
 
----
-
-## STEP 2 — Deploy to Vercel (Free, 5 Minutes)
-
-1. Create a free account at vercel.com
-2. Create a new GitHub repository (github.com → New repository)
-3. Upload all finstart files to the repo (drag and drop in GitHub)
-4. In Vercel: "Add New Project" → import your GitHub repo
-5. Leave all settings as default → click Deploy
-6. Your site is live at yourproject.vercel.app
-7. Optional: connect a custom domain (finstart.de) in Vercel's domain settings
-
----
-
-## STEP 3 — Connect Mailchimp Email Signup
-
-In `js/main.js`, find the `handleSignup()` function and uncomment:
-```javascript
-// Connect Mailchimp here
-// fetch(CONFIG.MAILCHIMP_URL, { method: 'POST', body: JSON.stringify({ email, name }) })
-```
-
-Replace with your actual Mailchimp API integration. The simplest approach:
-1. In Mailchimp, go to Audience → Signup forms → Embedded forms
-2. Copy the action URL from the form HTML
-3. Use that URL as your CONFIG.MAILCHIMP_URL
-4. The form already collects name and email — just POST to Mailchimp's form endpoint
-
----
-
-## STEP 4 — Connect Stripe (Premium)
-
-1. Go to your Stripe dashboard → Products → Create a product called "FinStart Premium"
-2. Set price to €4.99/month (or your chosen price)
-3. Create a Payment Link for this product
-4. Copy the payment link URL (looks like https://buy.stripe.com/xxxx)
-5. Paste it into premium.html where indicated
-
-For the Stripe publishable key in CONFIG: find it in Stripe Dashboard → Developers → API Keys
-
----
 
 ## What You Do NOT Need to Change
 
